@@ -17,7 +17,8 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
-            isShowPassword: false 
+            isShowPassword: false,
+            errMessage: "" 
         }
         
     }
@@ -32,12 +33,31 @@ class Login extends Component {
             }) 
         }
     handleLogin = async() => {
-       console.log('User nane:',this.state.username);
-        console.log(this.state.password);
-        try {
-        await handleLoginApi(this.state.username,this.state.password);
-        } catch (e) {
-            console.log(e);
+        this.setState({
+            errMessage:""
+        });
+       try {
+        let data = await handleLoginApi(this.state.username,this.state.password);
+        if(data && data.errCode !== 0){
+            this.setState({
+            errMessage: data.errMessage})
+        }
+        if(data && data.errCode === 0){
+            userLoginSuccess(data.user);
+            alert("You are login success");
+        }
+
+        } catch (error) {
+            if(error.response){
+                if(error.response.data){
+                    this.setState({
+                        errMessage:error.response.data.errMessage
+                    });
+
+                }
+            }
+
+            console.log("fdfdfdf",error.response);
         }
     }
     handleShowHidePassword = () =>{
@@ -68,6 +88,9 @@ class Login extends Component {
                            </span>
                             
                             </div>
+                        </div>
+                        <div className='col-12' style={{color:'red'}}>
+                            {this.state.errMessage}
                         </div>
                         <div className='col-12'>
                         <button className='btn-login' onClick={() => this.handleLogin()}>Login</button>
@@ -101,7 +124,8 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
         adminLoginFail: () => dispatch(actions.adminLoginFail()),
-    };
+        userLoginSuccess: (adminInfo) => dispatch(actions.userLoginSuccess(adminInfo))
+    };  
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
