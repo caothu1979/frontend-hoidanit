@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 //import * as actions from "../store/actions";
 import * as actions from "../../store/actions";
+import axios from "../../axios";
+import { handleLoginApi } from '../../services/userService';
 //import { KeyCodeUtils, LanguageUtils } from "../utils";
 import "./Login.scss";
 //import { FormattedMessage } from 'react-intl';
@@ -29,9 +31,14 @@ class Login extends Component {
                 password: event.target.value
             }) 
         }
-    handleLogin = () => {
+    handleLogin = async() => {
        console.log('User nane:',this.state.username);
-       console.log(this.state.password);
+        console.log(this.state.password);
+        try {
+        await handleLoginApi(this.state.username,this.state.password);
+        } catch (e) {
+            console.log(e);
+        }
     }
     handleShowHidePassword = () =>{
         this.setState({
