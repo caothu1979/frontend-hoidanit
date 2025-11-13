@@ -64,14 +64,14 @@ class App extends Component {
                     </div>
                 </Router>
             </Fragment>
-        )
+        ) 
     }
 }
 
 const mapStateToProps = state => {
     return {
         started: state.app.started,
-        isLoggedIn: state.admin.isLoggedIn
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 
