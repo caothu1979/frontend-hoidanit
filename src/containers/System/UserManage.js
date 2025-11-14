@@ -1,101 +1,91 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { getAllUser } from '../../services/userService';
 import "./UserManage.scss";
+import ModalUser from './ModalUser';
 class UserManage extends Component {
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrUsers: [],
+      isOpenUserModal: false
     }
-    
-
-    componentDidMount() {
-
+  }
+  async componentDidMount() {
+    let response = await getAllUser("ALL");
+    console.log(response);
+    if (response && response.errCode === 0) {
+      this.setState({
+        arrUsers: response.users
+      })
     }
+  }
+  hanleAddNewUser = () => {
+    this.setState({
+      isOpenUserModal: true
+    });
+  }
+  render() {
+    let arrUsers = this.state.arrUsers;
+    return (
+      <div className='user-container'>
+        <ModalUser
+          isOpen={this.state.isOpenUserModal} />
+        <div className="mx-2">
+          <div className='title text-center'>Manage users</div>
+          <div className='ml-2'>
+            <button className="btn btn-primary">Add new user</button>
+          </div>
 
+          <div className='users-table mt-2'>
+            <table>
+              <tr>
+                <th>stt</th>
+                <th>Email</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Phonenumber</th>
+                <th>Actions</th>
+              </tr>
+              {arrUsers && arrUsers.map((item, index) => {
 
-    render() {
-        return (
-            <div className="text-center">
-            <div className='title text-center'>Manage users</div>
-            <div className='users-table'>
-                <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-    <td>Sweden</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Königlich Essen</td>
-    <td>Philip Cramer</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-  <tr>
-    <td>North/South</td>
-    <td>Simon Crowther</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Paris spécialités</td>
-    <td>Marie Bertrand</td>
-    <td>France</td>
-  </tr>
-</table>
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{item.email}</td>
+                    <td>{item.firstName}</td>
+                    <td>{item.lastName}</td>
+                    <td>{item.gender}</td>
+                    <td>{item.address}</td>
+                    <td>{item.phonenumber}</td>
+                    <td>
+                      <button className='btn-edit' title="Edit"><i className="fas fa-edit"></i></button>
+                      <button className='btn-delete' title="Delete"><i className="fas fa-trash-alt"></i></button>
 
-
-            </div>
-            </div>
-        );
-    }
+                    </td>
+                  </tr>
+                )
+              })}
+            </table>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
 }
 
 const mapStateToProps = state => {
-    return {
-    };
+  return {
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-    };
+  return {
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserManage);
