@@ -1,3 +1,4 @@
+
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -39,6 +40,33 @@ th {
   color: rgb(255, 0, 93);
   &:hover {
     background-color: transparent !important;
-    color: rgb(255, 0, 93);
+   color: rgb(255, 0, 93);
     }
+}
+.modal-user-container {
+  .modal-user-body {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    .input-container {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    &.max-width-input {
+      width: 100%;
+    }
+    input {
+    
+    border-radius: 3px;
+    border: 1px solid gray;
+    outline: none;
+    //outline-style: ;
+    padding: 0 10px;
+    height: 30px;
+    }
+  }
+
+  }
+  
+
 }

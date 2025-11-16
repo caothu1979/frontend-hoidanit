@@ -22,8 +22,13 @@ class UserManage extends Component {
     }
   }
   hanleAddNewUser = () => {
-    this.setState({
+      this.setState({
       isOpenUserModal: true
+    });
+  }
+  toggleuserModal = ( ) => {
+    this.setState({
+      isOpenUserModal: !this.state.isOpenUserModal
     });
   }
   render() {
@@ -31,11 +36,14 @@ class UserManage extends Component {
     return (
       <div className='user-container'>
         <ModalUser
-          isOpen={this.state.isOpenUserModal} />
+          isOpen={this.state.isOpenUserModal}
+          toggleFromParent = {this.toggleuserModal} 
+          />
         <div className="mx-2">
           <div className='title text-center'>Manage users</div>
-          <div className='ml-2'>
-            <button className="btn btn-primary">Add new user</button>
+          <div className=' ml-2 '>
+            <button className="btn btn-primary px-3"
+            onClick={()=>this.hanleAddNewUser()}><i className="fas fa-plus"></i>Add new user</button>
           </div>
 
           <div className='users-table mt-2'>
