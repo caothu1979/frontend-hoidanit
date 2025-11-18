@@ -44,6 +44,18 @@ th {
     }
 }
 .modal-user-container {
+  .modal-content{
+    .modal-header{
+      button{
+        color: white;
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        
+
+      }
+    }
+  }
   .modal-user-body {
     display: flex;
     gap: 10px;

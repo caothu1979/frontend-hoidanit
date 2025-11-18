@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { emitter } from "../../utils/emitter";
-class ModalUser extends Component {
+import _ from 'lodash';
+class ModalEditUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,25 +14,27 @@ class ModalUser extends Component {
             address: ''
         }
         //this.state.email = this.state['email']
-        this.listenToEmitter();
-    }
-    componentDidMount() {
 
     }
-    listenToEmitter = () => {
-        emitter.on('EVENT CLEAR MODAL DATA', () => {
-            //console.log("listen on event emitter:", data);
+    componentDidMount() {
+        let user = this.props.currentUser;
+        if (user && !_.isEmpty(user)) {
             this.setState({
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                address: ''
-            });
-        });
+                id: user.id,
+                email: user.email,
+                password: 'caothu',
+                firstName: user.firstName,
+                lastName: user.lastName,
+                address: user.address
+            })
+        }
+        console.log("props user componentDidMont:", this.props.currentUser);
+
     }
+
+
     toggle = () => {
-        this.props.toggleFromParent();
+        this.props.toggleEditFromParent();
 
     }
     handleOnchangeInput = (event, id) => {
@@ -69,26 +71,32 @@ class ModalUser extends Component {
 
         this.toggle();
     }
+    handleEditUpdateUser = () => {
+        let check = this.checkValidInput();
+        if (check) {
+            this.props.doEditUser(this.state);
+        }
+        this.toggle();
+    }
 
     render() {
-        console.log(this.props.isOpen);
-        console.log(this.props);
+
         return (
-            <Modal className="modal-user-container" isOpen={this.props.isOpen} toggle={() => { this.toggle() }}
+            <Modal className="modal-user-container" isOpen={this.props.isOpenUserEdit} toggle={() => { this.toggle() }}
                 size="lg">
-                <ModalHeader toggle={() => { this.toggle() }}>Modal title</ModalHeader>
+                <ModalHeader toggle={() => { this.toggle() }}>Edit user</ModalHeader>
                 <ModalBody>
                     <div className='modal-user-body '>
                         <div className='input-container'>
                             <label>Email:</label>
                             <input type="text" onChange={(event) => { this.handleOnchangeInput(event, 'email') }}
-                                value={this.state.email} />
+                                value={this.state.email} disable />
 
                         </div>
                         <div className='input-container'>
                             <label>Password:</label>
                             <input type="password" onChange={(event) => { this.handleOnchangeInput(event, 'password') }}
-                                value={this.state.password} />
+                                value={this.state.password} disable />
 
                         </div>
                         <div className='input-container'>
@@ -132,8 +140,8 @@ class ModalUser extends Component {
 
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" className="px-3" onClick={() => { this.handleAddNew() }}>
-                        Add new
+                    <Button color="primary" className="px-3" onClick={() => { this.handleEditUpdateUser() }}>
+                        Save change
                     </Button>{' '}
                     <Button color="secondary" className="px-3" onClick={() => { this.toggle() }}>
                         Close
@@ -152,7 +160,6 @@ const mapDispatchToProps = dispatch => {
     return {
     };
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(ModalUser);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEditUser);
 
 
