@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
 
-
 class HomePage extends Component {
 
     render() {
@@ -11,7 +10,7 @@ class HomePage extends Component {
 
         return (
             <div>
-                <HomeHeader />
+                <HomeHeader/>
                 <div>Home page</div>
             </div>
         );
