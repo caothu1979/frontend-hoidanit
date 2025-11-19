@@ -10,8 +10,8 @@ class HomePage extends Component {
 
         return (
             <div>
-                <HomeHeader/>
-                <div>Home page</div>
+                <HomeHeader />
+
             </div>
         );
     }
