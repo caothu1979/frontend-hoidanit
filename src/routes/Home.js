@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import HomePage from '../containers/HomePage/HomePage'
+//import HomePage from '../containers/HomePage/HomePage'
 
 class Home extends Component {
 

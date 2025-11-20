@@ -3,16 +3,21 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import './HomeHeader.scss';
-import { languages } from '../../utils';
+import { LANGUAGES } from '../../utils';
+import { changeLanguageApp } from '../../store/actions/appActions';
 
 
 class HomeHeader extends Component {
+    handleChangeLanguage = (language) => {
+        this.props.changeLanguageAppRedux(language);
+
+    }
 
     render() {
 
-
+        let language = this.props.language;
         return (
-            <>
+            <React.Fragment>
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='left-content'>
@@ -21,27 +26,27 @@ class HomeHeader extends Component {
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
-                                <div><b><FormattedMessage id="headerhome.speciality"/></b></div>
-                                <div><FormattedMessage id="headerhome.search-doctor"/></div>
+                                <div><b><FormattedMessage id="headerhome.speciality" /></b></div>
+                                <div><FormattedMessage id="headerhome.search-doctor" /></div>
                             </div>
                             <div className='child-content'>
-                                <div><b><FormattedMessage id="headerhome.medical-facilities"/></b></div>
-                                <div><FormattedMessage id="headerhome.choose-medical"/></div>
+                                <div><b><FormattedMessage id="headerhome.medical-facilities" /></b></div>
+                                <div><FormattedMessage id="headerhome.choose-medical" /></div>
                             </div>
                             <div className='child-content'>
-                                <div><b><FormattedMessage id="headerhome.doctor"/></b></div>
-                                <div><FormattedMessage id="headerhome.choose-doctor"/></div>
+                                <div><b><FormattedMessage id="headerhome.doctor" /></b></div>
+                                <div><FormattedMessage id="headerhome.choose-doctor" /></div>
                             </div>
                             <div className='child-content'>
-                                <div><b><FormattedMessage id="headerhome.health-package"/></b></div>
-                                <div><FormattedMessage id="headerhome.general-health"/></div>
+                                <div><b><FormattedMessage id="headerhome.health-package" /></b></div>
+                                <div><FormattedMessage id="headerhome.general-health" /></div>
                             </div>
                         </div>
                         <div className='right-content'>
                             <div className='support'>
-                                <i class="far fa-question-circle"></i><FormattedMessage id="headerhome.support"/></div>
-                            <div className='language-vi active'>VN</div>
-                            <div className='language-en active'>EN</div>
+                                <i class="far fa-question-circle"></i><FormattedMessage id="headerhome.support" /></div>
+                            <div className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}><span onClick={() => this.handleChangeLanguage(LANGUAGES.VI)}>VN</span></div>
+                            <div className={language === LANGUAGES.EN ? 'language-en active' : 'language-en'}><span onClick={() => this.handleChangeLanguage(LANGUAGES.EN)}>EN</span></div>
                         </div>
                     </div>
                     <div className='home-header-banner'>
@@ -82,25 +87,22 @@ class HomeHeader extends Component {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-                </div>
-            </>
+                </div >
+            </React.Fragment>
         );
     }
-
 }
-
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn
-        language: state.app.language
+        isLoggedIn: state.user.isLoggedIn,
+        language: state.app.language,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
     };
 };
 
