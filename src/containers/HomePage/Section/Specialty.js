@@ -5,48 +5,64 @@ import './Specialty.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import coxuongkhop from "../../../assets/images/coxuongkhop.jpg"
 class Specialty extends Component {
     render() {
         let settings = {
-                    dots: true,
-                    infinite: true,
-                    speed: 500,
-                    slidesToShow: 4,
-                    slidesToScroll: 2
-                };
+            dots: false,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 2
+        };
         return (
             <>
-            
+
                 <div className='section-specialty'>
-                    <div className='specialty-content'>
-                    <Slider {...settings}>
-                    <div>
-                        <h3>1</h3>
+                    <div className='specialty-container'>
+                        <div className='specialty-header'>
+                            <span>Chuyên khoa phổ biến</span>
+                            <button className='btn-more'>Xem thêm</button>
+                        </div>
+                        <div className='specialty-customize'>
+                            <Slider {...settings}>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 1</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 2</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 3</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 4</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 5</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 6</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 7</div>
+                                </div>
+                                <div className='specialty-body'>
+                                    <div className='bg-image'></div>
+                                    <div>Cơ xương khớp 8</div>
+                                </div>
+                            </Slider>
+                        </div>
                     </div>
-                    <div>
-                        <h3>2</h3>
-                    </div>
-                    <div>
-                        <h3>3</h3>
-                    </div>
-                    <div>
-                        <h3>4</h3>
-                    </div>
-                    <div>
-                        <h3>5</h3>
-                    </div>
-                    <div>
-                        <h3>6</h3>
-                    </div>
-                    <div>
-                        <h3>5</h3>
-                    </div>
-                    <div>
-                        <h3>6</h3>
-                    </div>
-                    </Slider>
-                    </div>
-                   
+
+
                 </div>
 
             </>
