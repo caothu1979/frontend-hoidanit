@@ -16,7 +16,8 @@ class HomePage extends Component {
                 <HomeHeader />
                 <div className="home-header-banner"></div>
                 <Specialty />
-                 <Specialty />
+                <Specialty />
+                <Specialty />
             </>
 
 

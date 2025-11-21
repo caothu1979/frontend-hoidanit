@@ -17,6 +17,7 @@
             font-size: 18px;
             color: #333;
             .btn-more{
+                margin:30px 0px;
                 padding: 5px 10px;
                 border: 1px solid red;
                 border-radius: 5px;
@@ -28,6 +29,11 @@
                     color: #fff;
                 }
             }
+            .title-header{
+                font-size: 24px;
+                font-weight: 600px;
+                margin:30px 0px;
+            }
         }
    
         .specialty-body{
@@ -36,48 +42,37 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            
             cursor: pointer;
             .bg-image{
-                width: 230px;
-                height: 200px;
+                width: 275px;
+                height: 150px;
                // border-radius: 50%;
                 background-image: url('../../../../src/assets/images/coxuongkhop.jpg');
-                background-size: cover;
-                background-position: center;
+                background-size: contain;     /* Vừa khít div */
+                background-position: center center;
+                background-repeat: no-repeat;
                 margin-bottom: 20px;
+                
             }
             &:hover{
                 background: #e6e6e6;
             }
-        }}
-     
-
-
-
+        }} 
     .slick-arrow{
-
         z-index: 1;
-        
         top: 50%;
-        
         transform: translateY(-50%);
         width: 30px;
         height: 30px;   
         background: #fff;
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
-       
-        
-        
+    
     }   
     .slick-prev {
         left: 10px;
         top: 50%;
-        
-        transform: translateY(-50%);
-        
-
-
     }
     .slick-prev:before, .slick-next:before {
         font-size: 30px;
