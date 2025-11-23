@@ -5,57 +5,51 @@ import './Specialty.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import coxuongkhop from "../../../assets/images/coxuongkhop.jpg"
 class Specialty extends Component {
     render() {
-        let settings = {
-            dots: false,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 4,
-            slidesToScroll: 2
-        };
+        let settings =this.props.settings
         return (
             <>
-
-                <div className='section-specialty'>
-                    <div className='specialty-container'>
-                        <div className='specialty-header'>
-                            <span className='title-header'>Chuyên khoa phổ biến</span>
-                            <button className='btn-more'>Xem thêm</button>
+               <div className='section-share section-specialty'>
+                    <div className='section-container'>
+                        <div className='section-header'>
+                            <span className='title-section'>Chuyên khoa phổ biến</span>
+                            <button className='btn-section'>Xem thêm</button>
                         </div>
-                        <div className='specialty-customize'>
-                            <Slider {...settings}>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                        <div className='section-body'>
+                            <Slider {...this.props.settings}>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 1</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 2</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 3</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 4</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 5</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 6</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 7</div>
                                 </div>
-                                <div className='specialty-body'>
-                                    <div className='bg-image'></div>
+                                <div className='section-customize'>
+                                    <div className='bg-image section-specialty'></div>
                                     <div>Cơ xương khớp 8</div>
                                 </div>
                             </Slider>
