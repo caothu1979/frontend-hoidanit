@@ -8,7 +8,8 @@
     "choose-doctor":"Choose a good doctor",
     "health-package":"Health check-up package",
     "general-health":"General health check-up",
-    "support":"Support"
+    "support":"Support",
+    "welcome":"Welcome, "
    },
     
     "common": {
