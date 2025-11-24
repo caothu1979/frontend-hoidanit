@@ -16,7 +16,7 @@ import HomeFooter from './HomeFooter';
 class HomePage extends Component {
 
     render() {
-    let settings = {
+        let settings = {
             dots: false,
             infinite: true,
             speed: 500,
@@ -28,16 +28,16 @@ class HomePage extends Component {
             <>
                 <HomeHeader />
                 <div className="home-header-banner"></div>
-                <Specialty 
-                settings={settings}/>
+                <Specialty
+                    settings={settings} />
                 <MedicalFacilities
-                settings={settings}/>
+                    settings={settings} />
                 <OutstandingDoctor
-                settings={settings}/>
+                    settings={settings} />
                 <HandBook
-                settings={settings}/>
-                <About/>
-                <HomeFooter/>
+                    settings={settings} />
+                <About />
+                <HomeFooter />
             </>
 
 
