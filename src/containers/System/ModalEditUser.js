@@ -118,7 +118,6 @@ class ModalEditUser extends Component {
 
                         </div>
                         <div className='input-container'>
-
                             <label for="inputState">Gender:</label>
                             <select name="gender" className="form-control">
                                 <option value="1">Male</option>
@@ -133,11 +132,8 @@ class ModalEditUser extends Component {
                                 <option value="3">Patient</option>
                                 <option value="3">Patient</option>
                             </select>
-
                         </div>
                     </div>
-
-
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" className="px-3" onClick={() => { this.handleEditUpdateUser() }}>

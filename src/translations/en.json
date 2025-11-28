@@ -50,8 +50,24 @@
             "system-parameter": {
                 "header": "System-parameter"
             }
-        }
-    },
+        },
+        "admin": {
+        "manage-user":"Manage user",
+        "manage-doctor":"Manage doctor",
+        "crud-user":"Crud User",
+        "crud-redux":"Crud Redux",
+        "clinic":"Clinic",
+        "manage-clinic":"Manage clinic",
+        "handbook":"Handbook",
+        "manage-handbook":"Manage Handbook",
+        "manage-admin":"Manage admin",
+        "manage-schedule":"Manage schedule",
+        "manage-patient":"Manage patient",
+        "specialty":"Specialty",
+        "manage-specialty":"Manage specialty"
+        
+    }
+},
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Fail to load system users list",
@@ -79,7 +95,7 @@
             },
             "sure-delete-user": "Are you sure to delete this user?"
         },
-        "product-manage": {
+   "product-manage": {
             "fail-to-load-foprtype": "Fail to load packages list",
             "prid": "Package ID",
             "prname": "Package name",
@@ -129,5 +145,24 @@
             "remove-assign-fail": "Fail to unassign service package to customer",
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
         }
+    },
+    "manage-user":{
+        "title":"Title",
+        "add-new-user":"Add New User",
+        "add-new":"Add New",
+        "email":"Email",
+        "password":"Password",
+        "first-name":"Frist Name",
+        "last-name":"Last Name",
+        "address":"Address",
+        "phone-number":"Phone Number",
+        "gender":"Gender",
+        "role-id":"role id",
+        "action":"Action",
+        "edit":"Edit",
+        "delete":"Delete",
+        "manage-admin":"Manage admin",
+        "position":"Position",
+        "image":"Avatar"
     }
 }

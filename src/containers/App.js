@@ -20,9 +20,7 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage';
 import CustomScrollbars from '../components/CustomScrollbars';
-
 class App extends Component {
-
     handlePersistorState = () => {
         const { persistor } = this.props;
         let { bootstrapped } = persistor.getState();
@@ -36,19 +34,15 @@ class App extends Component {
             }
         }
     };
-
     componentDidMount() {
         this.handlePersistorState();
     }
-
     render() {
         return (
             <Fragment>
                 <Router history={history}>
                     <div className="main-container">
                         <ConfirmModal />
-
-
                         <div className="content-container">
                             <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
                                 <Switch>

@@ -125,11 +125,8 @@ class ModalUser extends Component {
                                 <option value="3">Patient</option>
                                 <option value="3">Patient</option>
                             </select>
-
                         </div>
                     </div>
-
-
                 </ModalBody>
                 <ModalFooter>
                     <Button color="primary" className="px-3" onClick={() => { this.handleAddNew() }}>

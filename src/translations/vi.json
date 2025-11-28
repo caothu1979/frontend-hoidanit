@@ -49,7 +49,22 @@
             "system-parameter": {
                 "header": "Tham số hệ thống"
             }
-        }
+        },
+        "admin": {
+        "manage-user":"Người dùng",
+        "manage-doctor":"Quản lý Bác sĩ",
+        "manage-admin":"Quản lý Admin",
+        "crud-user":"Crud Người dùng",
+        "crud-redux":"Crud Redux",
+        "clinic":"Phòng khám",
+        "manage-clinic":"Quản lý Phòng khám",
+        "handbook":"Cẩm nang",
+        "manage-handbook":"Quản lý Cẩm nang",
+        "manage-schedule":"Quản lý Lịch khám",
+        "manage-patient":"Quản lý Bệnh nhân",
+        "specialty":"Chuyên khoa",
+        "manage-specialty":"Quản lý Chuyên khoa"
+    }
     },
     "system": {
         "user-manage": {
@@ -128,5 +143,24 @@
             "remove-assign-fail": "Bỏ gán gói dịch vụ cho khách hàng thất bại",
             "sure-delete-assign": "Bạn có chắc chắn muốn bỏ gán gói dịch vụ cho khách hàng?"
         }
+    },
+    "manage-user":{
+        "title":"Quản lý người dùng",
+        "add-new-user":"Thêm mới người dùng",
+        "add-new":"Thêm mới",
+        "email":"Email",
+        "password":"Mật khẩu",
+        "first-name":"Tên",
+        "last-name":"Họ",
+        "address":"Địa chỉ",
+        "phone-number":"Số điện thoại",
+        "gender":"Giới tính",
+        "role-id":"Vai trò",
+        "action":"Hành động",
+        "edit":"Sửa",
+        "delete":"Xóa",
+        "manage-admin":"Quản lý Admin",
+        "position":"Chức vụ",
+        "image":"Ảnh đại diện"
     }
 }
