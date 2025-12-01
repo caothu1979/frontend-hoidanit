@@ -85,6 +85,17 @@ class UserRedux extends Component {
      handleAddNewUser = (event) => {
         let isValid = this.checkValidateInput();
         if (isValid === false) return;
+        this.props.createNewUser({
+            email: this.state.email,
+            password: this.state.password,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            phonenumber: this.state.phoneNumber,
+            address: this.state.address,
+            gender: this.state.gender,
+            roleId: this.state.role,
+            positionId: this.state.position
+        });
         
         console.log("Check state before submit:",this.state);
      }
@@ -259,6 +270,7 @@ const mapDispatchToProps = dispatch => {
        getGerderStart: () => dispatch(actions.FetchGenderStart()),
        FetchPositionStart: () => dispatch(actions.FetchPositionStart()),
        FetchRoleStart: () => dispatch(actions.FetchRoleStart()),
+       createNewUser: (data) => dispatch(actions.createNewUser(data)),
 
 
     };
