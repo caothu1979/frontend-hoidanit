@@ -6,6 +6,7 @@ import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import TableUserManager from './TableUserManager';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -240,6 +241,7 @@ class UserRedux extends Component {
                                 <button className='btn btn-primary text-center'
                                 onClick={(event) => this.handleAddNewUser(event)}><FormattedMessage id="manage-user.add-new" /></button>
                             </div>
+                        <TableUserManager/>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 import { getAllCodeService } from '../../services/userService';
-import { createNewUserService } from '../../services/userService';
+import { createNewUserService, getAllUser } from '../../services/userService';
 // export const FetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
 // })
@@ -121,4 +121,35 @@ export const createNewUserSuccess = () => ({
 })
 export const createNewUserFailded = () => ({
     type: actionTypes.CREATE_USER_FAILDED
+});
+export const FetchAllUserStart = () => {
+     return async (dispatch, getState) => {
+          try {
+           let res = await getAllUser("ALL");
+           console.log("Check new user Redux:", res);
+          
+          if (res && res.errCode === 0){
+            
+                    dispatch(FetchAllUserSuccess(res.users.reverse()));
+                  
+          }
+          else {
+                    dispatch(FetchAllUserFailded());
+          }
+
+          } catch(e){
+              dispatch(FetchAllUserFailded());      
+             console.log("FetchGenderStart error:",e);
+          }
+
+    }
+};
+
+export const FetchAllUserSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_USER_SUCCESS,
+    users: data
+    
+})
+export const FetchAllUserFailded = () => ({
+    type: actionTypes.FETCH_ALL_USER_FAILDED
 });
