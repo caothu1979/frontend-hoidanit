@@ -159,7 +159,7 @@
         "gender":"Gender",
         "role-id":"role id",
         "action":"Action",
-        "edit":"Edit",
+        "edit":"Edit User",
         "delete":"Delete",
         "manage-admin":"Manage admin",
         "position":"Position",

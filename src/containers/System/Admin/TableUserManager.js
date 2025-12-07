@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import * as actions from "../../../store/actions";
+
 class TableUserManage extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,14 @@ class TableUserManage extends Component {
                     })
           }
   }
+  handleDeleteUser = (idUser) => {
+    this.props.FetchDeleteUserStart(idUser);
+
+  }
+  handleEditUser = (data) => {
+    //console.log("Check edit user:",data);
+    this.props.handleEditUserParentKey(data); 
+  } 
  
   render() {
          // console.log("Check all users:",this.props.listUsers);
@@ -43,7 +52,8 @@ class TableUserManage extends Component {
                 <th>Actions</th>
               </tr>
              {(arrUsers && arrUsers.length > 0 && arrUsers.map((item,index) =>{
-                    return (
+                   console.log("Check Item:",item);
+                   return (
                     <tr key={index}>
                     <td>{index+1}</td>
                     <td>{item.email}</td>
@@ -56,9 +66,10 @@ class TableUserManage extends Component {
                     <td>{item.roleId}</td>
                     <td>
                       <button className='btn-edit' title="Edit"
+                      onClick={() =>{this.handleEditUser(item)}}
                       ><i className="fas fa-edit"></i></button>
                       <button className='btn-delete' title="Delete"
-                       ><i className="fas fa-trash-alt"></i></button>
+                       onClick={()=>{this.handleDeleteUser(item.id)}}><i className="fas fa-trash-alt"></i></button>
                     </td>
                   </tr>
                     )                    
@@ -78,7 +89,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 
   return {
-          FetchAllUserStart: () => dispatch(actions.FetchAllUserStart())
-  };
+          FetchAllUserStart: () => dispatch(actions.FetchAllUserStart()),
+          FetchDeleteUserStart: (id) => dispatch(actions.FetchDeleteUserStart(id))
+  
+        };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(TableUserManage);

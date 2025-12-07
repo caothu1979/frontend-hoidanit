@@ -147,7 +147,7 @@
     "manage-user":{
         "title":"Quản lý người dùng",
         "add-new-user":"Thêm mới người dùng",
-        "add-new":"Thêm mới",
+        "add-new":"Thêm mới User",
         "email":"Email",
         "password":"Mật khẩu",
         "first-name":"Tên",
@@ -157,7 +157,7 @@
         "gender":"Giới tính",
         "role-id":"Vai trò",
         "action":"Hành động",
-        "edit":"Sửa",
+        "edit":"Sửa User",
         "delete":"Xóa",
         "manage-admin":"Quản lý Admin",
         "position":"Chức vụ",
