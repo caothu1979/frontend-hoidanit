@@ -217,7 +217,7 @@ export const FetchEditUserFailded = () => ({
 export const FetchTopDoctorStart = () => {
     return async (dispatch, getState) => {
         try {
-            let res = await getTopDoctorService(3);
+            let res = await getTopDoctorService('');
             console.log("Check edit user Redux:", res);
             if (res && res.errCode === 0) {
                 //toast.success("Update is User Succeed!");
@@ -238,7 +238,7 @@ export const FetchTopDoctorStart = () => {
 }
 export const FetchTopDoctorSuccess = (data) => ({
     type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
-    data: data,
+    dataDoctor: data,
 })
 export const FetchTopDoctorFailed = () => ({
     type: actionTypes.FETCH_TOP_DOCTOR_FAILED,
