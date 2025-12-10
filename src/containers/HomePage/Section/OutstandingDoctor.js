@@ -17,17 +17,20 @@ class OutstandingDoctor extends Component {
         this.props.FetchTopDoctorStart();
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
+        if (prevProps.topDoctorRedux !== this.props.topDoctorRedux) {
             this.setState({
-                arrDoctors: this.props.topDoctorsRedux
+                arrDoctors: this.props.topDoctorRedux
             })
         }
 
     }
     render() {
-        console.log("Check top doctor redux:", this.props.topDoctorsRedux);
+        console.log("Check top doctor redux:", this.props.topDoctorRedux);
         let allDoctors = this.state.arrDoctors;
-        console.log("Check top doctor redux:", allDoctors);
+        let language =this.props.language;
+        //allDoctors = allDoctors.concat(allDoctors).allDoctors.concat(allDoctors)
+       
+        console.log("Check top doctor state:", allDoctors);
         return (
             <>
                 <div className='section-share outstanding-doctor'>
@@ -39,15 +42,25 @@ class OutstandingDoctor extends Component {
                         <div className='section-body'>
                             <Slider {...this.props.settings}>
                                 {allDoctors && allDoctors.length > 0 && allDoctors.map((item, index) => {
+                                    
+                                    let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`
+                                    let nameEn = `${item.positionData.valueEn}, ${item.lastName} ${item.firstName}`
+                                    let imageBase64 = '';
+                                    if(item.image){
+                                        
+                                        imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+                                    }
+                                    
                                     return (
                                         <div className='section-customize'>
                                             <div className='customize-border'>
                                                 <div className='section-bg'>
-                                                    <div className='bg-image outstanding-doctor'></div>
+                                                    <div className='bg-image outstanding-doctor'
+                                                    style={{ backgroundImage: `url(${imageBase64})` }}></div>
                                                 </div>
 
                                                 <div className='position-doctor text-center'>
-                                                    <div>Giáo sư, Tiến sĩ, Cao Văn Thu</div>
+                                                    <div>{language === LANGUAGES.VI ? nameVi: nameEn}</div>
                                                     <div>Cơ xương khớp</div>
                                                 </div>
                                             </div>
@@ -65,7 +78,7 @@ class OutstandingDoctor extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        topDoctorsRedux: state.admin.topDoctor,
+        topDoctorRedux: state.admin.topDoctor,
         language: state.app.language,
         //language: state.app.language,
     };
