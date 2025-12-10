@@ -218,7 +218,7 @@ export const FetchTopDoctorStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getTopDoctorService('');
-            console.log("Check edit user Redux:", res);
+            console.log("Check Fetch top Doctor Redux:", res);
             if (res && res.errCode === 0) {
                 //toast.success("Update is User Succeed!");
                 dispatch(FetchTopDoctorSuccess(res.data));

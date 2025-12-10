@@ -17,18 +17,17 @@ class OutstandingDoctor extends Component {
         this.props.FetchTopDoctorStart();
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.topDoctorsRedux !== this.props.topDoctorsRedux)
-        {
+        if (prevProps.topDoctorsRedux !== this.props.topDoctorsRedux) {
             this.setState({
                 arrDoctors: this.props.topDoctorsRedux
             })
         }
-        
+
     }
     render() {
-        //console.log("Check top doctor redux:",this.props.topDoctorsRedux);
-        let allDoctors = this.state.arrDoctors; 
-        console.log("Check top doctor redux:",allDoctors);
+        console.log("Check top doctor redux:", this.props.topDoctorsRedux);
+        let allDoctors = this.state.arrDoctors;
+        console.log("Check top doctor redux:", allDoctors);
         return (
             <>
                 <div className='section-share outstanding-doctor'>
@@ -39,22 +38,22 @@ class OutstandingDoctor extends Component {
                         </div>
                         <div className='section-body'>
                             <Slider {...this.props.settings}>
-                            { allDoctors && allDoctors.length > 0 && allDoctors.map((item,index) => {
-                                return (
-                                    <div className='section-customize'>
-                                    <div className='customize-border'>
-                                        <div className='section-bg'>
-                                            <div className='bg-image outstanding-doctor'></div>
-                                        </div>
+                                {allDoctors && allDoctors.length > 0 && allDoctors.map((item, index) => {
+                                    return (
+                                        <div className='section-customize'>
+                                            <div className='customize-border'>
+                                                <div className='section-bg'>
+                                                    <div className='bg-image outstanding-doctor'></div>
+                                                </div>
 
-                                        <div className='position-doctor text-center'>
-                                            <div>Giáo sư, Tiến sĩ, Cao Văn Thu</div>
-                                            <div>Cơ xương khớp</div>
+                                                <div className='position-doctor text-center'>
+                                                    <div>Giáo sư, Tiến sĩ, Cao Văn Thu</div>
+                                                    <div>Cơ xương khớp</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                )                                
-                            })}                              
+                                    )
+                                })}
                             </Slider>
                         </div>
                     </div>
@@ -67,7 +66,7 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         topDoctorsRedux: state.admin.topDoctor,
-        language: state.app.language, 
+        language: state.app.language,
         //language: state.app.language,
     };
 };
