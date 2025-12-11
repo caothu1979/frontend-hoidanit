@@ -10,7 +10,6 @@ class OutstandingDoctor extends Component {
         super(props)
         this.state = {
             arrDoctors: [],
-
         }
     }
     async componentDidMount() {
@@ -22,14 +21,12 @@ class OutstandingDoctor extends Component {
                 arrDoctors: this.props.topDoctorRedux
             })
         }
-
     }
     render() {
         console.log("Check top doctor redux:", this.props.topDoctorRedux);
         let allDoctors = this.state.arrDoctors;
-        let language =this.props.language;
+        let language = this.props.language;
         //allDoctors = allDoctors.concat(allDoctors).allDoctors.concat(allDoctors)
-       
         console.log("Check top doctor state:", allDoctors);
         return (
             <>
@@ -42,25 +39,21 @@ class OutstandingDoctor extends Component {
                         <div className='section-body'>
                             <Slider {...this.props.settings}>
                                 {allDoctors && allDoctors.length > 0 && allDoctors.map((item, index) => {
-                                    
                                     let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`
                                     let nameEn = `${item.positionData.valueEn}, ${item.lastName} ${item.firstName}`
                                     let imageBase64 = '';
-                                    if(item.image){
-                                        
+                                    if (item.image) {
                                         imageBase64 = new Buffer(item.image, 'base64').toString('binary');
                                     }
-                                    
                                     return (
                                         <div className='section-customize'>
                                             <div className='customize-border'>
                                                 <div className='section-bg'>
                                                     <div className='bg-image outstanding-doctor'
-                                                    style={{ backgroundImage: `url(${imageBase64})` }}></div>
+                                                        style={{ backgroundImage: `url(${imageBase64})` }}></div>
                                                 </div>
-
                                                 <div className='position-doctor text-center'>
-                                                    <div>{language === LANGUAGES.VI ? nameVi: nameEn}</div>
+                                                    <div>{language === LANGUAGES.VI ? nameVi : nameEn}</div>
                                                     <div>Cơ xương khớp</div>
                                                 </div>
                                             </div>

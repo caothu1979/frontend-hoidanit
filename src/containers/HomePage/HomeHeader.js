@@ -10,11 +10,8 @@ import { changeLanguageApp } from '../../store/actions/appActions';
 class HomeHeader extends Component {
     handleChangeLanguage = (language) => {
         this.props.changeLanguageAppRedux(language);
-
     }
-
     render() {
-
         let language = this.props.language;
         return (
             <React.Fragment>
