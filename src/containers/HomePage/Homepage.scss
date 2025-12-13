@@ -8,7 +8,12 @@
         border-radius: 50%;
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
     
-    }   
+    } 
+    .slick-disabled {
+    display: none !important;
+  /* or use opacity to make it transparent */
+  /* opacity: 0% !important; */
+}  
     .slick-prev {
         left: 10px;
         top: 50%;
