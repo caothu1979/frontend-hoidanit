@@ -1,6 +1,7 @@
 import actionTypes from './actionTypes';
 import { getAllCodeService } from '../../services/userService';
-import { createNewUserService, getAllUser, deleteUser, editUser, getTopDoctorService } from '../../services/userService';
+import { createNewUserService, getAllUser, deleteUser, 
+    editUser, getTopDoctorService, getAllDoctorService } from '../../services/userService';
 import { ToastContainer, toast } from 'react-toastify';
 // export const FetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
@@ -242,5 +243,34 @@ export const FetchTopDoctorSuccess = (data) => ({
 })
 export const FetchTopDoctorFailed = () => ({
     type: actionTypes.FETCH_TOP_DOCTOR_FAILED,
+});
+export const FetchAllDoctorStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllDoctorService();
+            console.log("Check Fetch All Doctor Redux:", res);
+            if (res && res.errCode === 0) {
+                //toast.success("Update is User Succeed!");
+                dispatch(FetchAllDoctorSuccess(res.data));
+                // dispatch(FetchAllUserStart());
+
+            }
+            else {
+                dispatch(FetchAllDoctorFailed());
+            }
+
+        } catch (e) {
+            dispatch(FetchAllDoctorFailed());
+            console.log("FetchAllDoctorFailed error:", e);
+        }
+
+    }
+}
+export const FetchAllDoctorSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_DOCTOR_SUCCESS,
+    dataDt: data,
+})
+export const FetchAllDoctorFailed = () => ({
+    type: actionTypes.FETCH_ALL_DOCTOR_FAILED,
 });
 
