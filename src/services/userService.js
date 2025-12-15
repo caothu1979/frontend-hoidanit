@@ -27,11 +27,14 @@ const getTopDoctorService = (limit) => {
 const getAllDoctorService = () => {
     return axios.get('/api/get-all-doctors');
 }
+const saveDetailDoctorService = (data) => {
+    return axios.post('/api/post-infor-doctor', data);
+}
 
 
 export {
     handleLoginApi, getAllUser, createNewUserService,
     deleteUser, editUser, getAllCodeService, getTopDoctorService,
-    getAllDoctorService
+    getAllDoctorService, saveDetailDoctorService
 
 }
