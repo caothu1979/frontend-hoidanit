@@ -20,7 +20,9 @@ import { LANGUAGES } from '../../../utils';
 // MdEditor.use(YOUR_PLUGINS_HERE);
 
 // Initialize a markdown parser
-const mdParser = new MarkdownIt();
+const mdParser = new MarkdownIt({
+    breaks: true
+});
 
 // Finish!
 

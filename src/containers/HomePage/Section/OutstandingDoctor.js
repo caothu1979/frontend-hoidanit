@@ -5,6 +5,7 @@ import * as actions from '../../../store/actions';
 import { LANGUAGES } from '../../../utils';
 //import './Specialty.scss';
 import Slider from "react-slick";
+import { withRouter } from 'react-router';
 class OutstandingDoctor extends Component {
     constructor(props) {
         super(props)
@@ -21,6 +22,10 @@ class OutstandingDoctor extends Component {
                 arrDoctors: this.props.topDoctorRedux
             })
         }
+    }
+    handleViewDetailDoctor = (doctor) => {
+        console.log("Check detail Doctor:",doctor);
+        this.props.history.push(`/detail-doctor/${doctor.id}`);
     }
     render() {
         console.log("Check top doctor redux:", this.props.topDoctorRedux);
@@ -46,7 +51,8 @@ class OutstandingDoctor extends Component {
                                         imageBase64 = new Buffer(item.image, 'base64').toString('binary');
                                     }
                                     return (
-                                        <div className='section-customize'>
+                                        <div className='section-customize' key={index}
+                                        onClick={()=> this.handleViewDetailDoctor(item)}>
                                             <div className='customize-border'>
                                                 <div className='section-bg'>
                                                     <div className='bg-image outstanding-doctor'
@@ -82,4 +88,4 @@ const mapDispatchToProps = dispatch => {
         FetchTopDoctorStart: () => dispatch(actions.FetchTopDoctorStart()),
     };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutstandingDoctor));
