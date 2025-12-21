@@ -279,6 +279,7 @@ export const FetchAllDoctorFailed = () => ({
 export const FetchSaveDetailDoctorStart = (data) => {
     return async (dispatch, getState) => {
         try {
+            console.log("check state action:", data.action);
             let res = await saveDetailDoctorService(data);
             console.log("FetchSaveDetailDoctorStart Redux:", res);
             if (res && res.errCode === 0) {
