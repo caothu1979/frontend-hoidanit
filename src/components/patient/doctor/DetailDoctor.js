@@ -13,65 +13,62 @@ class DetailDoctor extends Component {
         }
     }
     async componentDidMount() {
-        if(this.props.match && this.props.match.params && this.props.match.params.id) {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id;
             let res = await getDetailInforDoctor(id);
-          if(res && res.data) {
-            this.setState({
-                detailDoctor: res.data
-            })
-          }
+            if (res && res.data) {
+                this.setState({
+                    detailDoctor: res.data
+                })
+            }
         }
 
     }
-     componentDidUpdate(prevProps, prevState, snapshot) {
-       
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
     }
-   
-  
+
+
     render() {
-          console.log('check state detail doctor:',this.state.detailDoctor);
-           const {detailDoctor} = this.state;
-           const {language} = this.props;
-           let nameVi = '', nameEn ='';
-           if (detailDoctor && detailDoctor.positionData) {
-             nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`
-             nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`
-           }
+        console.log('check state detail doctor:', this.state.detailDoctor);
+        const { detailDoctor } = this.state;
+        const { language } = this.props;
+        let nameVi = '', nameEn = '';
+        if (detailDoctor && detailDoctor.positionData) {
+            nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`
+            nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`
+        }
         return (
             <>
-             <HomeHeader isShowBanner = {false}/>
-            <div className="doctor-detail-container">
-            <div className='infor-doctor'>
-                <div className='content-left'
-                style={{ backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image: "" })`}}
-                >
+                <HomeHeader isShowBanner={false} />
+                <div className="doctor-detail-container">
+                    <div className='infor-doctor'>
+                        <div className='content-left'
+                            style={{ backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ""})` }}
+                        >
+                        </div>
+                        <div className='content-right'>
+                            <div className='up'>
+                                {language === LANGUAGES.VI ? nameVi : nameEn}
+                            </div>
+                            <div className='down'>
+                                {detailDoctor.markdown && detailDoctor.markdown.description
+                                    && <span>{detailDoctor.markdown.description}</span>
+                                }
+                            </div>
 
-                </div>
-                <div className='content-right'>
-                    <div className='up'>
-                        {language === LANGUAGES.VI ? nameVi: nameEn}
+                        </div>
                     </div>
-                    <div className='down'>
-                        {detailDoctor.markdown && detailDoctor.markdown.description
-                        && <span>{detailDoctor.markdown.description}</span>
+
+                    <div className='schedule-doctor'>This is Detail Doctor</div>
+                    <div className='detail-infor-doctor'>
+                        {detailDoctor && detailDoctor.markdown && detailDoctor.markdown.contentHTML
+                            && <div dangerouslySetInnerHTML={{ __html: detailDoctor.markdown.contentHTML }}></div>
                         }
                     </div>
-
+                    <div className='comment-doctor'>This is Detail Doctor</div>
                 </div>
-            </div>
-                           
-            <div className='schedule-doctor'>This is Detail Doctor</div>
-            <div className='detail-infor-doctor'>
-                {detailDoctor && detailDoctor.markdown && detailDoctor.markdown.contentHTML
-                && <div dangerouslySetInnerHTML={{__html: detailDoctor.markdown.contentHTML}}></div>
-                }
-            </div>
-            <div className='comment-doctor'>This is Detail Doctor</div>
-            </div>
             </>
-               
-            
         );
     }
 }
@@ -81,13 +78,13 @@ class DetailDoctor extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language
-        
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-       
+
     };
 };
 

@@ -66,6 +66,10 @@
         "specialty":"Specialty",
         "manage-specialty":"Manage specialty"
         
+    },
+    "doctor": {
+        "manage-schedule":"Manage schedule",
+        "manage-patient":"Manage patient"
     }
 },
     "system": {

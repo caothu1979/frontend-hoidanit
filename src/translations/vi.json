@@ -64,9 +64,12 @@
         "manage-patient":"Quản lý Bệnh nhân",
         "specialty":"Chuyên khoa",
         "manage-specialty":"Quản lý Chuyên khoa"
-    }
     },
-    "system": {
+    "doctor": {
+        "manage-schedule":"Quản lý Lịch khám"
+       
+    },
+"system": {
         "user-manage": {
             "fail-to-load-fouser": "Không thể tải về danh sách người dùng",
             "user-id": "Mã người sử dụng",
@@ -163,4 +166,4 @@
         "position":"Chức vụ",
         "image":"Ảnh đại diện"
     }
-}
+} }

@@ -14,20 +14,25 @@ export const adminMenu = [
         // ]
         //Quản lý người dùng
         name: 'menu.admin.manage-user',
-
         menus: [
-
             { name: 'menu.admin.manage-user', link: '/system/user-manage' },
             { name: 'menu.admin.manage-doctor', link: '/system/manage-doctor' },
             { name: 'menu.admin.crud-user', link: '/system/crud-user' },
-            { name: 'menu.admin.crud-redux', link: '/system/crud-redux' }
+            { name: 'menu.admin.crud-redux', link: '/system/crud-redux' },
+            //Quản lý lịch khám bệnh của Bác sĩ
+            {
+                name: 'menu.doctor.manage-schedule',
+                menus: [
+                    { name: 'menu.doctor.manage-schedule', link: '/system/user-manage' }
+                ]
+            }
         ]
+
     },
     //Quản lý phòng khám
     {
         name: 'menu.admin.clinic',
         menus: [
-
             { name: 'menu.admin.manage-clinic', link: '/system/manage-clinic' },
             //{ name: 'menu.admin.manage-doctor', link: '/system/user-doctor' },
             //{ name: 'menu.admin.crud-user', link: '/system/crud-user' },
@@ -37,9 +42,7 @@ export const adminMenu = [
     //Quản lý chuyên khoa
     {
         name: 'menu.admin.specialty',
-
         menus: [
-
             { name: 'menu.admin.manage-specialty', link: '/system/manage-speciality' },
             { name: 'menu.admin.manage-doctor', link: '/system/user-doctor' },
             { name: 'menu.admin.crud-user', link: '/system/crud-user' },
@@ -59,14 +62,22 @@ export const adminMenu = [
         ]
     },
     {
-        name: 'menu.admin.manage-user',
-
+        //Quản lý lịch khám bệnh của Bác sĩ
+        name: 'menu.doctor.manage-schedule',
         menus: [
-
-            { name: 'menu.admin.manage-user', link: '/system/user-manage' },
-            { name: 'menu.admin.manage-doctor', link: '/system/user-doctor' },
-            { name: 'menu.admin.crud-user', link: '/system/crud-user' },
-            { name: 'menu.admin.crud-redux', link: '/system/crud-redux' }
+            { name: 'menu.doctor.manage-schedule', link: '/system/user-manage' }
         ]
+    }
+];
+export const doctorMenu = [
+    {
+        //Quản lý lịch khám bệnh của Bác sĩ
+        name: 'menu.admin.manage-user',
+        menus: [{
+            name: 'menu.doctor.manage-schedule',
+            menus: [
+                { name: 'menu.doctor.manage-schedule', link: '/system/user-manage' }
+            ]
+        }]
     }
 ];
