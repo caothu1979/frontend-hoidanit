@@ -20,12 +20,10 @@ export const adminMenu = [
             { name: 'menu.admin.crud-user', link: '/system/crud-user' },
             { name: 'menu.admin.crud-redux', link: '/system/crud-redux' },
             //Quản lý lịch khám bệnh của Bác sĩ
-            {
-                name: 'menu.doctor.manage-schedule',
-                menus: [
-                    { name: 'menu.doctor.manage-schedule', link: '/system/user-manage' }
-                ]
-            }
+           
+            { name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule' }
+                
+           
         ]
 
     },
@@ -61,23 +59,22 @@ export const adminMenu = [
             { name: 'menu.admin.crud-redux', link: '/system/crud-redux' }
         ]
     },
-    {
+    
         //Quản lý lịch khám bệnh của Bác sĩ
+        {
         name: 'menu.doctor.manage-schedule',
+
         menus: [
-            { name: 'menu.doctor.manage-schedule', link: '/system/user-manage' }
-        ]
-    }
+            { name: 'menu.doctor.manage-schedule', link: '/system/manage-schedule' }
+       
+        ]}
 ];
 export const doctorMenu = [
     {
         //Quản lý lịch khám bệnh của Bác sĩ
         name: 'menu.admin.manage-user',
-        menus: [{
-            name: 'menu.doctor.manage-schedule',
-            menus: [
-                { name: 'menu.doctor.manage-schedule', link: '/system/user-manage' }
+        menus: [
+                { name: 'menu.doctor.manage-schedule', link: '/system/manage-schedule' }
             ]
-        }]
     }
 ];

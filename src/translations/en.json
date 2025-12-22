@@ -168,5 +168,8 @@
         "manage-admin":"Manage admin",
         "position":"Position",
         "image":"Avatar"
-    }
+    },
+    "manage-schedule":{
+    "title": "Doctor's medical examination plan"
+} 
 }
