@@ -307,3 +307,31 @@ export const FetchSaveDetailDoctorSuccess = () => ({
 export const FetchSaveDetailDoctorFailed = () => ({
     type: actionTypes.FETCH_SAVE_DETAIL_DOCTOR_FAILED,
 });
+export const FetchAllScheduleTimeStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllCodeService('TIME');
+            console.log("Check Fetch All Time Redux:", res);
+            if (res && res.errCode === 0) {
+                //toast.success("Update is User Succeed!");
+                dispatch(FetchAllScheduleTimeSuccess(res.data));
+                // dispatch(FetchAllUserStart());
+            }
+            else {
+                dispatch(FetchAllScheduleTimeFailed());
+            }
+
+        } catch (e) {
+            dispatch(FetchAllScheduleTimeFailed());
+            console.log("FetchAllScheduleTimeFailed error:", e);
+        }
+
+    }
+}
+export const FetchAllScheduleTimeSuccess = (data) => ({
+    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
+    dataScheduleTime: data,
+})
+export const FetchAllScheduleTimeFailed = () => ({
+    type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_FAILED,
+});

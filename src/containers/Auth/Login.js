@@ -67,6 +67,11 @@ class Login extends Component {
         });
 
     }
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            this.handleLogin();
+        }
+    }
 
     render() {
         return (
@@ -83,7 +88,8 @@ class Login extends Component {
                             <label>Password:</label>
                             <div className='custom-input-password'>
                                 <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control' placeholder='Enter your Password'
-                                    value={this.state.password} onChange={(event) => this.handleOnchangePassword(event)} />
+                                    value={this.state.password} onChange={(event) => this.handleOnchangePassword(event)}
+                                    onKeyDown={(event) => this.handleKeyDown(event)} />
                                 <span onClick={() => this.handleShowHidePassword()}>
                                     <i className={this.state.isShowPassword ? "far fa-eye" : "fas fa-eye-slash"}></i>
                                 </span>
@@ -94,7 +100,9 @@ class Login extends Component {
                             {this.state.errMessage}
                         </div>
                         <div className='col-12'>
-                            <button className='btn-login' onClick={() => this.handleLogin()}>Login</button>
+                            <button className='btn-login'
+                                onClick={() => this.handleLogin()}
+                            >Login</button>
                         </div>
                         <div className='col-12'>
                             <span className='col-12 forgot-password'>Forgot password?</span>

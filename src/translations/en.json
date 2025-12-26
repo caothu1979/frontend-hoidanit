@@ -170,6 +170,10 @@
         "image":"Avatar"
     },
     "manage-schedule":{
-    "title": "Doctor's medical examination plan"
+    "title": "Doctor's medical examination plan",
+    "select-doctor":"Select Doctor",
+    "save":"Save information",
+    "select-date":"Select Date",
+    "available-time":"Select available time"
 } 
 }

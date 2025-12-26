@@ -9,9 +9,29 @@
 
           }
           .pick-time-container {
-                    border: 1px solid red;
-                    height: 500px;
-                    margin-top: 15px;
-                    margin-bottom: 15px;
+                    display: flex;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                    //border: 1px solid red;
+                    padding-top: 20px;                   
+                    padding-bottom: 20px;
+                    .btn-schedule{
+                        border: 1px solid gray;
+                        cursor: pointer;
+                        padding: 0px 10px;
+                        //padding-bottom: 5px;
+                        &:hover{
+                            background-color: #0d6efd;
+                            color: white;
+                        }
+      
+                        
+                    }
+                    
           }
-}
+          .btn-save-schedule{
+                        margin-top: 20px;
+                       text-align: center;
+                       padding: 0px 10px;
+                    }
+        }

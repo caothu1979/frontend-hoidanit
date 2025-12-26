@@ -168,6 +168,10 @@
     }
 },
 "manage-schedule":{
-    "title": "Kế hoạch khám bệnh"
+    "title": "Kế hoạch khám bệnh",
+    "select-doctor":"Chọn Bác sĩ",
+    "save":"Lưu thông tin",
+    "select-date":"Chọn ngày",
+    "available-time":"Chọn thời gian khám bệnh"
 } 
 }
