@@ -111,15 +111,16 @@ class ManageSchedule extends Component {
             toast.error("Invalid Doctor");
             return;
         }
-        let formatedDate = moment(currDate).format(dateFormat.SEND_TO_SERVER);
+        //let formatedDate = moment(currDate).format(dateFormat.SEND_TO_SERVER);
+        let formatedDate = new Date(currDate).getTime();
         if (rangeTime && rangeTime.length > 0) {
             let selectedTime = rangeTime.filter(item => item.isSelected === true);
             if (selectedTime && selectedTime.length > 0) {
                 selectedTime.map((item, index) => {
                     let object = {};
-                    object.id = selectedDoctor.value;
+                    object.doctorId = selectedDoctor.value;
                     object.date = formatedDate;
-                    object.time = item.keyMap;
+                    object.timeType = item.keyMap;
                     result.push(object);
                 })
             } else {
