@@ -4,6 +4,7 @@ import './DetailDoctor.scss';
 import HomeHeader from '../../../containers/HomePage/HomeHeader';
 import { getDetailInforDoctor } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
+import DoctorSchedule from './DoctorSchedule';
 
 class DetailDoctor extends Component {
     constructor(props) {
@@ -60,7 +61,14 @@ class DetailDoctor extends Component {
                         </div>
                     </div>
 
-                    <div className='schedule-doctor'>This is Detail Doctor</div>
+                    <div className='schedule-doctor'>
+                        <div className='content-left'>
+                                <DoctorSchedule/>
+                        </div>
+                        <div className='content-right'>
+
+                        </div>
+                    </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.markdown && detailDoctor.markdown.contentHTML
                             && <div dangerouslySetInnerHTML={{ __html: detailDoctor.markdown.contentHTML }}></div>

@@ -135,6 +135,7 @@ class ManageSchedule extends Component {
             date: formatedDate
         });
         console.log("Check result schedule:", result);
+         toast.success("Success schedule Doctor");
     }
     render() {
         /*{ this.props.isLoggedIn && <Header /> }*/
