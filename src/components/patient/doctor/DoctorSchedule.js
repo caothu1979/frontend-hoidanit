@@ -4,6 +4,7 @@ import { LANGUAGES } from '../../../utils';
 import './DoctorSchedule.scss';
 import moment from 'moment';
 import localization from 'moment/locale/vi';
+import {getScheduleDoctorByDate} from '../../../services/userService';
 
 class DoctorSchedule extends Component {
     constructor(props) {
@@ -44,15 +45,28 @@ class DoctorSchedule extends Component {
             this.setArrDate(this.props.language);
         }
     }
+    handleScheduleDoctor = async(event) => {
+        console.log("this is value select:",event.target.value);
+        
+        if (this.props.doctorId && this.props.doctorId !== -1)
+        {
+            let doctorId = this.props.doctorId;
+            let date = event.target.value;             
+        let res = await getScheduleDoctorByDate(doctorId,date);
+        console.log("doctor schedule:",res);
+        }
+        
+    }
 
 
     render() {
         let {allDays} = this.state;
+        console.log("all days:",allDays);
         return (
             
                <div className='doctor-schedule-container'>
                 <div className='all-shedule'>
-                <select>
+                <select onChange={(event) => this.handleScheduleDoctor(event)}>
                     {allDays && allDays.length > 0 && allDays.map((item,index) =>{
                         return(
                              <option key={index} value={item.value}>
