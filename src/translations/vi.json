@@ -173,5 +173,10 @@
     "save":"Lưu thông tin",
     "select-date":"Chọn ngày",
     "available-time":"Chọn thời gian khám bệnh"
-} 
+},
+"patient": {
+    "detail_doctor": {
+        "Schedule":"Lịch Khám"
+    } 
+}
 }

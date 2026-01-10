@@ -5,7 +5,7 @@ import './DoctorSchedule.scss';
 import moment from 'moment';
 import localization from 'moment/locale/vi';
 import { getScheduleDoctorByDate } from '../../../services/userService';
-
+import { FormattedMessage } from 'react-intl';
 class DoctorSchedule extends Component {
     constructor(props) {
         super(props);
@@ -35,28 +35,40 @@ class DoctorSchedule extends Component {
         }
         return allDays;
     }
-    async componentDidMount() {
+    componentDidMount() {
 
         //console.log('Moment VietNam:', moment(new Date()).format('dddd - DD/MM'));
         // console.log('Moment English:', moment(new Date()).locale('en').format('ddd - DD/MM'));
+       console.log("Check props this.props.doctorPerentId", this.props.doctorPerentId);
         const { language } = this.props;
         let allDays = this.getArrDate(language);
         this.setState({
             allDays: allDays
         });
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.language !== prevProps.language) {
-            this.setArrDate(this.props.language);
+           let allDaysLanguage = this.getArrDate(this.props.language);
+           this.setState({
+            allDays: allDaysLanguage
+           })
+        }
+        if(this.props.doctorPerentId !== prevProps.doctorPerentId) {
+            let allDays = this.getArrDate(this.props.language);
+            let res = await getScheduleDoctorByDate(this.props.doctorPerentId, allDays[0].value);
+            console.log("Check available time:", this.props.doctorPerentId);
+            this.setState({
+                availableTime: res.data ? res.data : []
+            })
         }
     }
     handleScheduleDoctor = async (event) => {
         //console.log("this is value select:", event.target.value);
 
-        if (this.props.doctorId && this.props.doctorId !== -1) {
-            let doctorId = this.props.doctorId;
+        if (this.props.doctorParentId && this.props.doctorParentId !== -1) {
+            let doctorParentId = this.props.doctorParentId;
             let date = event.target.value;
-            let res = await getScheduleDoctorByDate(doctorId, date);
+            let res = await getScheduleDoctorByDate(doctorParentId, date);
             //console.log("doctor schedule:", res);
             if (res && res.errCode === 0) {
                 this.setState({
@@ -86,7 +98,7 @@ class DoctorSchedule extends Component {
                 <div className='all-available-time'>
                     <div className='text-calendar'>
                         <i className="fas fa-calendar-alt">
-                            <span>Lịch Khám</span></i>
+                            <span><FormattedMessage id="patient.detail_doctor.Schedule"/></span></i>
                     </div>
                     <div className='time-content'>
                         {availableTime && availableTime.length > 0 ?

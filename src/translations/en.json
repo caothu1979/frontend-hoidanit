@@ -175,5 +175,10 @@
     "save":"Save information",
     "select-date":"Select Date",
     "available-time":"Select available time"
+},
+"patient": {
+    "detail_doctor": {
+        "Schedule":"Schedule"
+    }
 } 
 }
