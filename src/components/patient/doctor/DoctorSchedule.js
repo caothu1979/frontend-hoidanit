@@ -15,10 +15,11 @@ class DoctorSchedule extends Component {
 
         }
     }
+    //UpperCase first letter
     capitalizeFirstLetter(val) {
         return String(val).charAt(0).toUpperCase() + String(val).slice(1);
     }
-    setArrDate = (language) => {
+    getArrDate = (language) => {
         let allDays = [];
         for (let i = 0; i < 7; i++) {
             let object = {};
@@ -32,18 +33,17 @@ class DoctorSchedule extends Component {
             object.value = moment(new Date()).add(i, 'days').startOf('day').valueOf();
             allDays.push(object);
         }
-        this.setState({
-            allDays: allDays
-        })
-
-
+        return allDays;
     }
     async componentDidMount() {
-        const { language } = this.props;
-        console.log('Moment VietNam:', moment(new Date()).format('dddd - DD/MM'));
-        console.log('Moment English:', moment(new Date()).locale('en').format('ddd - DD/MM'));
-        this.setArrDate();
 
+        //console.log('Moment VietNam:', moment(new Date()).format('dddd - DD/MM'));
+        // console.log('Moment English:', moment(new Date()).locale('en').format('ddd - DD/MM'));
+        const { language } = this.props;
+        let allDays = this.getArrDate(language);
+        this.setState({
+            allDays: allDays
+        });
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.language !== prevProps.language) {
