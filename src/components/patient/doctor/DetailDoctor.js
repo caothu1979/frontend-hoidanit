@@ -36,7 +36,7 @@ class DetailDoctor extends Component {
 
 
     render() {
-        console.log('check state detail doctor:', this.state.detailDoctor);
+        
         const { detailDoctor } = this.state;
         const { language } = this.props;
         let nameVi = '', nameEn = '';
@@ -44,6 +44,7 @@ class DetailDoctor extends Component {
             nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`
             nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`
         }
+       
         return (
             <>
                 <HomeHeader isShowBanner={false} />
