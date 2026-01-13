@@ -180,5 +180,12 @@
     "detail_doctor": {
         "Schedule":"Schedule"
     }
+},
+"admin":{
+    "title":"Create more Doctor information",
+    "choose-doctor":"Choose Doctor",
+    "Doctor-Infor": "Doctor information",
+    "create-infor": "Create Information",
+    "save-infor": "Save Information"
 } 
 }

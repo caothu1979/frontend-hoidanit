@@ -131,11 +131,11 @@ class ManageDoctor extends Component {
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>
-                    This is manage doctor page
+                    <FormattedMessage id="admin.title"/>
                 </div>
                 <div className='more-infor'>
                     <div className='content-left form-group'>
-                        <label>Chọn Bác sĩ:</label>
+                        <label><FormattedMessage id="admin.choose-doctor"/>:</label>
                         <Select
                             value={this.state.selectedDoctor}
                             onChange={this.handleChangeSelect}
@@ -144,7 +144,7 @@ class ManageDoctor extends Component {
 
                     </div>
                     <div className='content-rigth form-group'>
-                        <label>Thông tin Bác sĩ:</label>
+                        <label><FormattedMessage id="admin.Doctor-Infor"/>:</label>
                         <textarea className='form-control' rows={4} cols={40}
                             onChange={(event) => this.handleOnChangeDisc(event)}
                             value={this.state.description}>
@@ -161,7 +161,7 @@ class ManageDoctor extends Component {
 
                 <button className={oldData === true ? 'save-content-doctor' : 'create-content-doctor'}
                     onClick={() => this.handleSaveDetailDoctor()}>
-                    {oldData === true ? <span>Lưu thông tin</span> : <span>Tạo thông tin</span>}</button>
+                    {oldData === true ? <span><FormattedMessage id="admin.save-infor"/></span> : <span><FormattedMessage id="admin.create-infor"/></span>}</button>
             </div>
         );
     }

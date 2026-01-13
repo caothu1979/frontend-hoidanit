@@ -178,5 +178,12 @@
     "detail_doctor": {
         "Schedule":"Lịch Khám"
     } 
+},
+"admin":{
+    "title":"Tạo thêm thông tin Bác sĩ",
+    "choose-doctor":"Chọn Bác sĩ",
+    "Doctor-Infor": "Thông tin Bác sĩ",
+    "create-infor": "Tạo thông tin",
+    "save-infor": "Lưu Thông tin"
 }
 }
