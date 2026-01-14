@@ -31,16 +31,29 @@ class ManageDoctor extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            //save markdown
             contentMarkdown: '',
             contentHTML: '',
             selectedDoctor: '',
             description: '',
             listDoctors: [],
             oldData: false,
+            //save doctor infomation
+            listPrice: [],
+            listPayment: [],
+            listProvice: [],
+            selectedPrice:'',
+            selectedPayment:'',
+            selectedProvice:'',
+            nameClinic:'',
+            addressClinic:'',
+            note:''
+
         }
     }
     async componentDidMount() {
         this.props.FetchAllDoctorStart();
+        this.props.FetchRequiredDoctorInfor();
 
 
 
@@ -74,6 +87,9 @@ class ManageDoctor extends Component {
             this.setState({
                 listDoctors: selectDoctor
             })
+        }
+        if(prevProps.allRequiredInfor !== this.props.allRequiredInfor) {
+            console.log("Check prop redux doctor infor:",this.props.allRequiredInfor)
         }
 
 
@@ -140,6 +156,7 @@ class ManageDoctor extends Component {
                             value={this.state.selectedDoctor}
                             onChange={this.handleChangeSelect}
                             options={this.state.listDoctors}
+                            placeholder={'Chọn Bác sĩ'}
                         />
 
                     </div>
@@ -149,9 +166,35 @@ class ManageDoctor extends Component {
                             onChange={(event) => this.handleOnChangeDisc(event)}
                             value={this.state.description}>
                         </textarea>
-                    </div>
-
+                    </div>                           
                 </div>
+                <div className='more-context-extra row'>
+                <div className='col-4 form-group'>
+                    <lable>Chọn giá:</lable>
+                    <input className='form-control'/>
+                </div>
+                <div className='col-4 form-group'>
+                    <lable>Chọn phương thức thanh toán:</lable>
+                    <input className='form-control'/>
+                </div>
+                <div className='col-4 form-group'>
+                    <lable>Chọn tỉnh thành:</lable>
+                    <input className='form-control'/>
+                </div>
+                <div className='col-4 form-group'>
+                    <lable>Tên phòng khám:</lable>
+                    <input className='form-control'/>
+                </div>
+                <div className='col-4 form-group'>
+                    <lable>Địa chỉ phòng khám:</lable>
+                    <input className='form-control'/>
+                </div>
+                <div className='col-4 form-group'>
+                    <lable>Note:</lable>
+                    <input className='form-control'/>
+                </div>
+                </div>
+
                 <div className='manage-doctor-editor'>
                     <MdEditor style={{ height: '500px' }}
                         renderHTML={text => mdParser.render(text)}
@@ -170,7 +213,8 @@ class ManageDoctor extends Component {
 const mapStateToProps = state => {
     return {
         allDoctors: state.admin.allDoctors,
-        language: state.app.language
+        language: state.app.language,
+        allRequiredInfor: state.admin.allRequiredInfor,
 
     };
 };
@@ -179,7 +223,8 @@ const mapDispatchToProps = dispatch => {
     return {
 
         FetchAllDoctorStart: () => dispatch(actions.FetchAllDoctorStart()),
-        FetchSaveDetailDoctorStart: (data) => dispatch(actions.FetchSaveDetailDoctorStart(data))
+        FetchSaveDetailDoctorStart: (data) => dispatch(actions.FetchSaveDetailDoctorStart(data)),
+        FetchRequiredDoctorInfor: () => dispatch(actions.FetchRequiredDoctorInfor())
 
     };
 };

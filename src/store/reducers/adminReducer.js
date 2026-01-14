@@ -10,6 +10,7 @@ const initialState = {
     topDoctor: [],
     allDoctors: [],
     allScheduleTime: [],
+    allRequiredInfor: []
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -140,7 +141,32 @@ const adminReducer = (state = initialState, action) => {
                 ...state,
 
             }
+            // action doctor information
+            // case actionTypes.FETCH_DOCTOR_PRICE_START:
+            // let copyState = { ...state };
+            // copyState.genders = action.data;
+            // copyState.isLoadingGender = true;
+            // console.log('Fetch gender start:', action);
+            // return {
+            //     ...copyState,
 
+            // }
+        case actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_SUCCESS:
+            state.allRequiredInfor = action.data;
+            
+            console.log('FETCH_REQUIRED_DOCTOR_INFOR_SUCCESS:', action);
+            return {
+                ...state,
+
+            }
+        case actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAILD:
+            state.gendersallRequiredInfor = [];
+            
+            console.log('FETCH_REQUIRED_DOCTOR_INFOR_FAILD:', action);
+            return {
+                ...state,
+
+            }
         default:
             return state;
     }
