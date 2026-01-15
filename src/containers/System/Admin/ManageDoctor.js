@@ -41,10 +41,10 @@ class ManageDoctor extends Component {
             //save doctor infomation
             listPrice: [],
             listPayment: [],
-            listProvice: [],
+            listProvince: [],
             selectedPrice:'',
             selectedPayment:'',
-            selectedProvice:'',
+            selectedProvince:'',
             nameClinic:'',
             addressClinic:'',
             note:''
@@ -58,15 +58,15 @@ class ManageDoctor extends Component {
 
 
     }
-    buildDataSelect = (data) => {
+    buildDataSelect = (data,type) => {
         let result = [];
         const { language } = this.props;
 
         if (data && data.length > 0) {
             data.map((item, index) => {
                 let object = {};
-                let labelVi = `${item.lastName} ${item.firstName}`;
-                let labelEn = `${item.firstName} ${item.lastName}`;
+                let labelVi = type =='USER'? `${item.lastName} ${item.firstName}`: item.valueVi;
+                let labelEn = type =='USER'? `${item.firstName} ${item.lastName}`: item.valueEn;
                 object.label = language === LANGUAGES.VI ? labelVi : labelEn;
                 object.value = item.id;
                 result.push(object);
@@ -83,14 +83,35 @@ class ManageDoctor extends Component {
             })
         }
         if (prevProps.language !== this.props.language) {
-            let selectDoctor = this.buildDataSelect(this.props.allDoctors);
+            let selectDoctor = this.buildDataSelect(this.props.allDoctors,'USER');
+            let {resPayment,resPrice,resProvince} = this.props.allRequiredInfor;
+            let dataSelectedPrice = this.buildDataSelect(resPrice);
+            let dataSelectedPayment = this.buildDataSelect(resPayment);
+            let dataSelectedProvince = this.buildDataSelect(resProvince);
             this.setState({
-                listDoctors: selectDoctor
+                listDoctors: selectDoctor,
+                listPrice: dataSelectedPrice,
+               listPayment: dataSelectedPayment,
+               listProvince: dataSelectedProvince
             })
         }
         if(prevProps.allRequiredInfor !== this.props.allRequiredInfor) {
-            console.log("Check prop redux doctor infor:",this.props.allRequiredInfor)
-        }
+           // console.log("Check prop redux doctor infor:",this.props.allRequiredInfor)
+            //let data = this.props.allRequiredInfor;
+            let {resPayment,resPrice,resProvince} = this.props.allRequiredInfor;
+            let dataSelectedPrice = this.buildDataSelect(resPrice);
+            let dataSelectedPayment = this.buildDataSelect(resPayment);
+            let dataSelectedProvince = this.buildDataSelect(resProvince);
+          // console.log("Check data selected:",dataSelectedPrice);
+            this.setState({
+               listPrice: dataSelectedPrice,
+               listPayment: dataSelectedPayment,
+               listProvince: dataSelectedProvince
+            });
+            // listPrice: [],
+            // listPayment: [],
+            // listProvice: [],
+            }
 
 
     }
@@ -143,7 +164,8 @@ class ManageDoctor extends Component {
     render() {
         // console.log("Check props redux:", this.props.allDoctors);
         // console.log("Check state selected:", this.state.listDoctors);
-        let { oldData } = this.state;
+         //console.log("Check prop redux doctor infor:",this.state.listPrice);
+        let { oldData} = this.state;
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>
@@ -171,15 +193,30 @@ class ManageDoctor extends Component {
                 <div className='more-context-extra row'>
                 <div className='col-4 form-group'>
                     <lable>Chọn giá:</lable>
-                    <input className='form-control'/>
+                    <Select
+                           // value={this.state.selectedPrice}
+                            //onChange={this.handleChangeSelect}
+                            options={this.state.listPrice}
+                            placeholder={'Chọn giá'}
+                        />
                 </div>
                 <div className='col-4 form-group'>
                     <lable>Chọn phương thức thanh toán:</lable>
-                    <input className='form-control'/>
+                    <Select
+                            //value={this.state.selectedPayment}
+                           // onChange={this.handleChangeSelect}
+                            options={this.state.listPayment}
+                            placeholder={'Chọn phương thức thanh toán'}
+                        />
                 </div>
                 <div className='col-4 form-group'>
                     <lable>Chọn tỉnh thành:</lable>
-                    <input className='form-control'/>
+                    <Select
+                            //value={this.state.selectedProvince}
+                            //onChange={this.handleChangeSelect}
+                            options={this.state.listProvince}
+                            placeholder={'Chọn tỉnh thành'}
+                        />
                 </div>
                 <div className='col-4 form-group'>
                     <lable>Tên phòng khám:</lable>
